@@ -5,11 +5,11 @@
 			<BOUCLE_docs(DOCUMENTS){id_article}{par rang_lien}{extension==jpg|png|gif}>
 				<li>
 					[(#ENV{home,'non'}|=={oui}|?{
-						[(#FICHIER|image_reduire{1700,*}|image_recadre{*,450}|inserer_attribut{alt,#TITRE})]
-						[(#FICHIER|image_reduire{*,800}|image_recadre{800,800,'top center'}|inserer_attribut{alt,#TITRE})]
+						[(#FICHIER|image_reduire{1700,450}|image_recadre{1700,450}|inserer_attribut{alt,#TITRE})]
+						[(#FICHIER|image_reduire{800,800}|image_recadre{800,800,'top center'}|inserer_attribut{alt,#TITRE})]
 					,
-						[(#FICHIER|image_reduire{1700,*}|image_recadre{*,350}|inserer_attribut{alt,#TITRE})]
-						[(#FICHIER|image_reduire{800,*}|inserer_attribut{alt,#TITRE})]
+						[(#FICHIER|image_reduire{1700,350}|image_recadre{1700,350}|inserer_attribut{alt,#TITRE})]
+						[(#FICHIER|image_reduire{800,800}|inserer_attribut{alt,#TITRE})]
 					})]
 				</li>
 			</BOUCLE_docs>
