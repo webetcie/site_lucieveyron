@@ -1,0 +1,33 @@
+	
+	/* Préfooter */
+	#prefooter { background-color:@bleuclair; padding:0; display:none;
+		&>a img { width:100%; .block; }
+		.wrapper { padding:15px 0; 
+			article { .gras; .moyen; 
+				a { color:@bleu; margin:20px 0; .block; .grand; }
+			}
+		}
+	}
+	
+	/* Footer Lucie Veyron */
+	footer { background-color:@bleu; 
+		.wrapper { color:white; 
+			
+			/*liens */
+			a { color:white; }
+			
+			/* Newlsetter */
+			.formulaire_newsletter {
+				
+				p.boutons { margin:0; 
+					input { background-color:@bleu; border:1px solid white; color:white; .radius; padding:10px;
+						&:hover { background-color:@bleuclair; color:@bleu; border:1px solid @bleuclair;}
+					}
+				}
+				.editer-groupe { 
+					input { background-color:@bleu; border:1px solid @bleuclair; color:white; .radius; }
+				}
+			}
+					
+		}
+	}

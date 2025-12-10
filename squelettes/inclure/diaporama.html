@@ -1,0 +1,20 @@
+<BOUCLE_article(ARTICLES){id_article}{tout_voir}>
+	<B_docs>
+	<div class="diaporama" id="diaporama_#ID_ARTICLE">
+		<ul class="medias">
+			<BOUCLE_docs(DOCUMENTS){id_article}{par rang_lien}{extension==jpg|png|gif}>
+				<li>
+					[(#ENV{home,'non'}|=={oui}|?{
+						[(#FICHIER|image_reduire{1700,*}|image_recadre{*,450}|inserer_attribut{alt,#TITRE})]
+						[(#FICHIER|image_reduire{*,800}|image_recadre{800,800,'top center'}|inserer_attribut{alt,#TITRE})]
+					,
+						[(#FICHIER|image_reduire{1700,*}|image_recadre{*,350}|inserer_attribut{alt,#TITRE})]
+						[(#FICHIER|image_reduire{800,*}|inserer_attribut{alt,#TITRE})]
+					})]
+				</li>
+			</BOUCLE_docs>
+		</ul>
+		[<span class="trait"></span>(#TEXTE)]
+	</div>
+	</B_docs>
+</BOUCLE_article>

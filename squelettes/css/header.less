@@ -1,0 +1,88 @@
+	
+	/* Header Lucie Veyron */
+	header {
+		.wrapper {
+			
+			/* Titre */
+			.spip_logo_site { .pacifico; }
+			
+			/* Slogan */
+			#slogan { font-size:50px; .pacifico; min-width:220px; 
+				a {  color:@bleu; }
+				em { .petit; .block; font-weight:normal; font-style: normal; .openSans; margin-left:3px; 
+					&:first-child { margin-top:13px; }
+				}
+			}
+			
+			/* Menu de navigation */
+			nav { margin-right: 0; 
+				ul { 
+					li { .majuscules; .gras; .normal; margin:20px 10px;font-size:14px; 
+						a { color:@bleu; border-bottom:2px solid #fff; padding-bottom:5px; .centrer; 
+							&:hover, &:focus { border-color:#bfebfc; color:@bleu; }
+						}
+						&.on a { border-color:#bfebfc; color:@bleu; }
+						
+						/* Prise de rdv */
+						&:last-child { background:url('../svg/calendrier.svg') 15px 8px no-repeat @bleu; .bouton; vertical-align:middle; text-align:left; padding:5px 20px 5px 60px; margin-right:0; line-height:19px;
+							a { color:white; border:0; padding:0; 
+								&:hover, &:focus { color:white; }
+							}
+						}
+					}
+				}
+			}
+			
+			/* Hamburger */
+			.hamburger-inner, .hamburger-inner::after, .hamburger-inner::before { background-color:@bleu; }
+		}
+	}
+	
+	/* Version ordinateur */
+	@media screen and (min-width: @tablette) {
+		header { 
+			&+section { margin-top:120px; }
+		}
+	}
+	
+	/* Version intermédiaire */
+	@media screen and (max-width: 1290px) {
+		header {
+			.wrapper {
+				nav {
+					ul {
+						li {
+							&:last-child { .cacher; }
+						}
+					}
+				}
+			}
+		}	
+	}
+	
+	/* Version tablette */
+	@media screen and (max-width: @tablette) {
+		
+		header {
+			.wrapper {
+				nav {
+					ul {
+						li {
+							&:last-child { margin:auto; }
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	/* Version smartphone */
+	@media screen and (max-width: @smartphone) {
+		header { 
+			.wrapper {
+			
+				/* Slogan */
+				#slogan { font-size:30px; }
+			}
+		}
+	}

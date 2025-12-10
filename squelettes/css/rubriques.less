@@ -1,0 +1,227 @@
+
+	/* Rubriques */
+	.page_rubrique { 
+		.spip_out {
+			background-color:green;
+			border-radius:20px; padding:10px;
+			color:white; font-weight:bold; 
+			display:block; width:fit-content; margin:30px 0;
+		}
+		.petitombre { box-shadow:0 0 5px 0 rgba(0,0,0,0.15); }
+		
+		/* Général */
+		section {
+			&#rubrique { 
+				.wrapper {
+					h1 { .cacher; }
+				}
+			}
+		}
+		
+		/* Métiers */
+		&#rubrique_2, &#rubrique_3, &#rubrique_4 {
+		
+			/* Sections */
+			section { 
+				
+				/* Intro de la rubrique */
+				&#rubrique { .relative; margin-top:-100px; z-index:13; padding-left:50px;  
+					.wrapper { width:49%; .ombre; padding:50px; margin-left:45%; margin-bottom:150px; background-color:white; 
+						p, ul {  .normal; .justifie; margin:20px auto; .relative; z-index:3; 
+							&.descriptif { .moyen; .gras; }
+							li { padding:10px; .gras; }
+						}
+						.spip_logo { .absolute; left:auto; top:135px; right:59%; }
+						blockquote { .absolute; left:auto; top:310px; right:55%; width:400px; background:url('../svg/guillemets-gris.svg') no-repeat top left; background-size:150px; padding:80px 40px; 
+							p { color:@bleuclairtexte; .alignerDroite; .moyen; .relative; z-index:2; }
+							&:after { content:''; background:url('../svg/guillemets-gris.svg') no-repeat top left; background-size:150px; width:150px; height:150px; display:block; transform:rotate(180deg); margin:-130px 0 0 300px; .relative; z-index:1;  }
+							
+							/* Version tablette */
+							@media screen and (max-width: @tablette) {
+								&:after { .cacher; }
+							}
+						}
+					}
+					
+					/* Version tablette portrait */
+					@media screen and (max-width: @tablettePortrait) { margin-top:50px; padding-left:15px; 
+						.wrapper { width:100%; margin:auto; 
+							blockquote { .relative; top:auto; left:auto; right:auto; width:100%; padding:80px 0; 
+								p { .centrer; }
+								&:after { .block; }
+							}
+						}
+					}
+					
+				}
+				
+				/* Général */
+				h3 { .gras; margin-top:50px; clear:both; }
+				ol { background-color:@bleu; color:white; padding:20px 40px; max-width:320px; .relative; float:right; margin:15px 0 50px 50px;  
+					li { .petit; margin-left:40px; }
+					&:before { content:'Méthode'; transform:rotate(270deg); .block; .centrer; .absolute; top:130px; left:-90px; letter-spacing: 10px; .petit; .majuscules; padding:5px 0; width:250px; border-top:1px solid white; border-bottom:1px solid white; }
+				}
+				
+					/* Version smartphone */
+					@media screen and (max-width: @smartphone) { 
+						ol { float:none; margin-left:0; }
+					}
+				
+				/* Onglets */
+				.onglets { margin-top:50px; 
+					li { background-color:@bleu; color:white; margin-left:-3px; .gras;  
+						&.on, &:hover { background-color:@bleuclair; color:@bleu; }
+					}	
+				}
+				.slider {
+					li { background:none; 
+						.spip_logo { float:right; }
+						.pourri { overflow: auto; 
+							p { .justifie; padding-right: 40px;}
+						}
+						/* Version tablette portrait */
+						@media screen and (max-width: @tablettePortrait) { .spip_logo { float:none; }}
+					}
+				}
+			}
+		}
+		
+		/* Menu fixe */
+		#menufixe { border-right:1px solid @bleu; 
+			li {
+				a, a:hover { color:@bleu; }
+			}
+		}
+		
+		/* Mentions légales */
+		&#rubrique_8, &#rubrique_9 {
+			section {
+				.wrapper {
+					h2 { .moyen; margin-top:80px; }
+					h3 { .gras; margin-top:20px; }
+				}
+			}
+		}
+		
+		/* Psychothérapie */
+		&#rubrique_2, &#rubrique_3 {
+			
+			section {
+				
+				/* Pour qui ? */
+				&#article_14, &#article_53 { background-color:@bleuclair; margin-top:100px;
+					article { margin:-80px auto 0;  max-width:1000px; 
+						.content { background-color:@bleuclair; margin:-300px 0 0 250px; .relative; max-width:600px; padding:50px; 
+							p {
+								strong { .moyen; }
+							}
+						}
+						
+						/* Version smartphone */
+						@media screen and (max-width: @smartphone) { margin:-30px; 
+							.content { margin:0; }
+						}
+					}
+				}
+				&#article_53 { margin-top:150px; }
+				
+				/* Pour soulager quoi ? */
+				&#article_17, &#article_56 { margin-top:100px; }
+				
+				/* Comment ? */
+				&#article_15, &#article_54 { margin-top:100px; 
+					article { max-width:1050px; margin:auto; 
+						h2 { max-width:30%; .alignerDroite; 
+							&:after { content:''; width:20px; height:3px; background-color:@bleu; .block; margin:20px 0 20px auto; }
+						}
+						.texte {
+							&>p { max-width:30%; .inline; color:@bleuclairtexte; .alignerDroite; .moyen; }
+							ul { max-width:54%; .inline; margin:-50px 0 0 5%; 
+								li { .inline; max-width:46%; margin-bottom:50px; 
+									img { .block; }
+									strong { .block; margin:10px 0; }
+									&:nth-child(odd) { margin-right:8%; }
+								}
+							}
+						}
+					}
+					
+					/* Version tablette portrait */
+					@media screen and (max-width: @tablettePortrait) { 
+						article {
+							h2 { max-width: 100%; .centrer; 
+								&:after { .cacher; }
+							}
+							.texte { margin-top:50px; 
+								&>p { .block; max-width:100%; .centrer; }
+								ul { max-width:100%; margin-top:50px; }
+							}
+						}	
+					}
+					
+					/* Version smartphone */
+					@media screen and (max-width: @smartphone) { 
+						article {
+							.texte {
+								ul {
+									li { .block; max-width:100%; }
+								}
+							}
+						}
+					}
+				}
+				
+				/* Tarifs */
+				&#article_16, &#article_55 { background-color:@bleu; margin-top:100px; padding-top:50px; 
+					article { max-width:1050px; margin:auto; 
+						h2 { color:white; .inline; width:30%; padding-top:20px;  
+							&:before { content:''; width:20px; height:3px; background-color:white; .inline; margin:40px 20px 0 0; }
+						}
+						.texte { .block; width:100%;
+							ul { margin-top:20px; 
+								li { background-color:white; .inline; padding:70px 50px; width:30%; min-height:350px; max-width:300px; .centrer; .moyen; .ombre; .relative; z-index:13; 
+									strong { .block; font-size:70px; line-height:70px; font-weight:600; margin:30px auto; 
+										&+i { background:url('../svg/duree.svg') no-repeat; background-size:25px; .inline; padding-left:35px; }
+									}
+									i { font-style: normal; height:40px; .block; }
+									&+li { margin-left:30px; }
+								}
+							}
+						}
+					}
+					
+					/* Version smartphone */
+					@media screen and (max-width: @smartphone) { max-height:1000px; 
+						article { 
+							h2, .texte { .block; width:100%; margin-bottom:20px; 
+								ul {
+									li { .block; width:100%; margin:0 auto 30px; 
+										&+li { margin-left:auto; }
+									}
+								}
+							}	
+						}
+					}
+					@media screen and (min-width: @smartphone){
+						&+#prefooter { margin-top:0; padding-top:130px; }
+					}
+				}
+			}
+		}
+		
+		/* Le cabinet */
+		&#rubrique_5 {
+			section {
+				.wrapper {
+					article { margin:40px 0; 
+						.spip_logo { float:left; border-radius: 150px; margin:20px 40px 0 0; }
+						.content { overflow: auto; }
+						@media screen and (max-width: @tablettePortrait) { .spip_logo { float:none; margin-right:0; }}
+					}
+				}
+			}
+		}
+		
+		/* Pied */
+		#prefooter { margin-top:50px; }
+	}

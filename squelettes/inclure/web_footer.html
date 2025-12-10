@@ -1,0 +1,80 @@
+<section id="prefooter">
+	
+	<div class="wrapper">
+		
+		[(#REM) On cherche une rubrique accueil]
+		<BOUCLE_rubriqueaccueil2(RUBRIQUES){titre=Accueil}{tout_voir}{0,1}>
+		
+			[(#REM) Adresse ?]
+			<B_ladresse>
+				<article id="adresse">
+					<BOUCLE_ladresse(ARTICLES){id_rubrique=#ID_RUBRIQUE}{titre=Adresse}{tout_voir}{0,1}>
+						[<div class="texte">(#TEXTE)</div>]
+					</BOUCLE_ladresse>
+				</article>
+			</B_ladresse>
+			
+			[(#REM) Le téléphone ?]
+			<B_letelephone>
+				<article id="telephone">
+					<BOUCLE_letelephone(ARTICLES){id_rubrique=#ID_RUBRIQUE}{titre=Téléphone}{tout_voir}{0,1}>
+						[<a href="tel:[(#TEXTE|textebrut)]" class="telephone">(#TEXTE|textebrut)</a>]
+					</BOUCLE_letelephone>
+				</article>
+			</B_letelephone>
+			
+		</BOUCLE_rubriqueaccueil2>
+		
+	</div>
+	
+	[(#REM) Plan]
+	<a href="https://www.google.fr/maps/place/Lucie+Veyron+:+Psychologue+clinicienne+-+Neuropsychologue+-+Instructrice+pleine+conscience/@47.6509533,-2.7907442,17z/data=!3m1!4b1!4m5!3m4!1s0x48101eaa80e25a15:0xb775a8bb3447a1f7!8m2!3d47.6509497!4d-2.7885555" target="_blank">
+		<BOUCLE_couleurs(RUBRIQUES){id_rubrique=1}{tout_voir}>
+			[(#LISTER_VALEURS{couleurs}|=={automne}|?{[<img src="(#CHEMIN{img/here-vert.jpg})" id="plan" alt="Plan de situation du cabinet" />]})]
+		</BOUCLE_couleurs>
+	</a>
+	
+</section>
+
+<footer>
+	<div class="wrapper">
+		
+		[(#REM) On cherche une rubrique accueil]
+		<BOUCLE_rubriqueaccueil(RUBRIQUES){titre=Accueil}{tout_voir}{0,1}>
+		
+			<div class="colonne moitie">
+				<strong class="titre">#NOM_SITE_SPIP</strong>
+			
+				[(#REM) Adresse ?]
+				<BOUCLE_adresse(ARTICLES){id_rubrique=#ID_RUBRIQUE}{titre=Adresse}{tout_voir}{0,1}>
+					[<div class="texte">(#TEXTE)</div>]
+				</BOUCLE_adresse>
+				
+				[(#REM) Téléphone ?]
+				<BOUCLE_telephone(ARTICLES){id_rubrique=#ID_RUBRIQUE}{titre=Téléphone}{tout_voir}{0,1}>
+					[<a href="tel:[(#TEXTE|textebrut)]" class="telephone">(#TEXTE|textebrut)</a>]
+				</BOUCLE_telephone>
+			</div>
+		
+		</BOUCLE_rubriqueaccueil>
+		
+		[(#REM) Arborescence du site]
+		<div class="colonne moitie">
+			<ul>
+				<BOUCLE_accueil(RUBRIQUES){racine}{titre=Accueil}{0,1}{doublons}{tout_voir}>
+					<li class="nav-item[ (#EXPOSE)]">
+						<a href="#URL_SITE_SPIP">[(#TITRE|textebrut)]</a>
+					</li>
+				</BOUCLE_accueil>
+				<BOUCLE_nav(RUBRIQUES){racine}{par num titre, titre}{doublons}{tout}{!titre_mot=Hors navigation}>
+					<li class="nav-item[ (#EXPOSE)]">
+						<a href="#URL_RUBRIQUE">[(#TITRE|textebrut)]</a>
+					</li>
+				</BOUCLE_nav>
+				<li><a href="#URL_SITE_SPIP/mentions-legales">Mentions légales</a></li>
+				<li><a href="#URL_SITE_SPIP/politique-de-confidentialite">Politique de confidentialité</a></li>
+			</ul>
+		</div>
+		
+	</div>
+</footer>

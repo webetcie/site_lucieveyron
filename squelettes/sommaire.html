@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js">
+	<head>
+		<title>[(#NOM_SITE_SPIP|textebrut)]</title>
+		[<meta name="description" content="(#DESCRIPTIF_SITE_SPIP|couper{150}|attribut_html)" />]
+		<INCLURE{fond=inclure/web_head} />
+	</head>
+	
+	<body class="pas_surlignable page_sommaire <BOUCLE_couleurs(RUBRIQUES){id_rubrique=1}{tout_voir}>#LISTER_VALEURS{couleurs}</BOUCLE_couleurs>">
+		
+		<div class="page">
+		
+			[(#REM) En-tête]
+			<INCLURE{fond=inclure/web_header,home=oui} />
+			
+			[(#REM) On cherche une rubrique accueil]
+			<BOUCLE_accueil(RUBRIQUES){titre=Accueil}{tout_voir}{0,1}>
+			
+				[(#REM) Si il y a un diaporama, on l'affiche]
+				<BOUCLE_diaporama(ARTICLES){id_rubrique}{tout_voir}{titre=Diaporama}{0,1}{doublons}>
+					<section id="diaporama">
+						<div class="wrapper">
+							<INCLURE{fond=inclure/diaporama,id_article,home=oui} />
+						</div>
+					</section>
+				</BOUCLE_diaporama>
+				
+				[(#REM) Secteurs d'activité]
+				<section>
+					<div class="wrapper">
+						<B_secteurs>
+							<ul id="secteurs">
+								<BOUCLE_secteurs(RUBRIQUES){id_rubrique IN 2,3,4}{par num titre}{tout}>
+									<a href="#URL_RUBRIQUE" title="#TITRE">
+										<li>
+											[(#LOGO_RUBRIQUE|image_reduire{310,*})]
+											[<h2>(#TITRE)</h2>]
+										</li>
+									</a>
+								</BOUCLE_secteurs>
+							</ul>
+						</B_secteurs>	
+					</div>
+				</section>
+				
+				[(#REM) Puis les autres articles]
+				<B_articles>
+					<section id="accueil">
+						<div class="wrapper">
+							<BOUCLE_articles(ARTICLES){id_rubrique}{tout_voir}{!titre=Adresse}{!titre=Téléphone}{par num titre}{doublons}{!id_article=68}>
+								<article id="article_#ID_ARTICLE">
+									[(#LOGO_ARTICLE|inserer_attribut{class,'masquersursmartphone'})]
+									[<div class="texte">(#TEXTE)</div>]
+									<div style="clear:both"></div>
+								</article>
+							</BOUCLE_articles>
+						</div>
+					</section>
+				</B_articles>
+				
+				[(#REM) Cabinet]
+				<BOUCLE_cabinet(RUBRIQUES){id_rubrique=5}{tout}>
+					<section id="cabinet">
+						<div class="wrapper">
+							[(#LOGO_RUBRIQUE)]
+							<div class="content">
+								[<h2>(#TITRE)</h2>]
+								[<div class="texte">(#DESCRIPTIF)</div>]
+								<div class="liens">
+									<a href="#URL_RUBRIQUE">En savoir plus</a>
+									<BOUCLE_inscriptions(RUBRIQUES){id_rubrique=6}{tout}>
+										<a href="#URL_RUBRIQUE">#TITRE</a>
+									</BOUCLE_inscriptions>
+								</div>
+							</div>
+						</div>
+					</section>
+				</BOUCLE_cabinet>
+				
+				[(#REM) Actualités]
+				<INCLURE{fond=inclure/actualites,id_rubrique=7} />
+			
+			</BOUCLE_accueil>
+			
+			[(#REM) Pied de page]
+			<INCLURE{fond=inclure/web_footer,env} />
+		</div>
+	</body>
+</html>

@@ -1,0 +1,70 @@
+<BOUCLE_principale(RUBRIQUES){id_rubrique}{tout}>
+	<!DOCTYPE html>
+	<html dir="#LANG_DIR" lang="#LANG" xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" class="[(#LANG_DIR)][ (#LANG)] no-js">
+		<head>
+			<title>[(#TITRE|couper{80}|textebrut) - ][(#NOM_SITE_SPIP|textebrut)]</title>
+			[<meta name="description" content="(#INTRODUCTION{150}|attribut_html)" />]
+			[<link rel="canonical" href="(#URL_RUBRIQUE|url_absolue)" />]
+			<INCLURE{fond=inclure/web_head} />
+		</head>
+	
+		<body class="pas_surlignable page_rubrique <BOUCLE_couleurs(RUBRIQUES){id_rubrique=1}{tout_voir}>#LISTER_VALEURS{couleurs}</BOUCLE_couleurs>" id="rubrique_#ID_RUBRIQUE">
+		
+			<div class="page">
+				
+				[(#REM) En-tête]
+				<INCLURE{fond=inclure/web_header,env} />
+				
+				[(#REM) Si il y a un diaporama, on l'affiche]
+				<BOUCLE_diaporama(ARTICLES){id_rubrique}{titre=Diaporama}{0,1}{doublons}>
+					<section id="diaporama">
+						<div class="wrapper">
+							<INCLURE{fond=inclure/diaporama,id_article} />
+						</div>
+					</section>
+				</BOUCLE_diaporama>
+				
+				[(#REM) Menu de rubrique sauf sur certaines pages]
+				<BOUCLE_test(RUBRIQUES){id_rubrique}{id_rubrique IN 5,8,9}>
+				</BOUCLE_test>
+				</B_test>
+					[(#INCLURE{fond=inclure/web_menufixe, env})]
+				<//B_test>
+				
+				[<section id="rubrique">
+					<div class="wrapper">
+						<h1>#TITRE</h1>
+						[(#LOGO_RUBRIQUE|image_reduire{250})]
+						[(#DESCRIPTIF|inserer_attribut{class,descriptif})]
+						(#TEXTE)
+					</div>
+				</section>]
+					
+				[(#REM) Articles]
+				<B_articles>
+					<BOUCLE_articles(ARTICLES){id_rubrique}{par num titre}{doublons}>
+						<section id="article_#ID_ARTICLE">
+							<div class="wrapper">
+								<article>
+									[(#LOGO_ARTICLE|inserer_attribut{"class","petitombre"})]
+									<div class="content">
+										[<h2>(#TITRE)</h2>]
+										[<div class="texte">(#TEXTE)</div>]
+									</div>
+								</article>
+								
+								[(#REM) Slider ?]
+								<INCLURE{fond=inclure/slider,id_article} />
+								
+							</div>
+						</section>
+					</BOUCLE_articles>
+				</B_articles>
+				
+				[(#REM) Pied de page]
+				<INCLURE{fond=inclure/web_footer,env} />
+			</div>
+		
+		</body>
+	</html>
+</BOUCLE_principale>

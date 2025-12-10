@@ -1,0 +1,151 @@
+
+	/* Imports */
+		
+	/* Framework ORION Site Web */
+	@OpenSansPath: "/plugins/orion/css/opensans/fonts";
+	@import "plugins/orion/css/orion_web.less";
+	
+	/* Couleurs */
+	@bleu : #0056a4; 
+	@bleuclair : #bfebfc;
+	@bleuclairtexte : #8dd3ee; 
+	
+	/* Feuilles de style du projet */
+	@import "css/header.less";
+	@import "css/footer.less";
+	@import "css/rubriques.less";
+	@import "css/couleurs.less";
+	
+	/* Typos */
+	.pacifico { font-family: "Pacifico";}
+	h1 { .grand; }
+	h2 { .enorme; font-weight:600; }
+	
+	/* Général */
+	html, body { color:@bleu; }
+	
+	/* Erreur 404 */
+	.page_404 {
+		article { margin-bottom:300px; 
+			a { color:@bleu; .gras; 
+				&:hover { text-decoration: underline; }
+			}
+		}
+	}
+	
+	#alerte { background-color:#145a32; color:white; text-align: center; width:100%;}
+	
+	/* Diaporamas */
+	#diaporama {
+		p { .absolute; top:50px; left:50%; z-index:13; margin-left:-500px;
+			strong { .pacifico; font-size:90px; .block; font-weight: normal; line-height:90px; 
+				i { .block; font-size:30px; font-style: normal; margin:-40px 0 -20px 125px;  }
+			}
+			em { font-style: normal; text-align: right; .block; margin-right:115px; }
+		}
+		@media screen and (max-width: @tablette) {
+			p { margin-left:0; left:0; width:100%; .centrer; 
+				strong { 
+					i { margin:-40px auto -20px; }
+				}
+				em { .centrer; margin:0 auto; }
+			}
+		}
+		@media screen and (max-width: @tablettePortrait) {
+			p { top:100px; 
+				strong { 
+					i { margin:-10px auto -20px; }
+				}
+			}
+		}
+		@media screen and (max-width: @smartphone) {
+			p {
+				strong { font-size:50px; line-height:50px; 
+					i { margin:-10px auto 0; font-size:20px;}
+				}
+			}
+		}
+	}
+
+	/* Page d'accueil */
+	.page_sommaire {
+		
+		/* Secteurs d'activité */
+		#secteurs { margin:-50px auto 100px; .relative; z-index:12; .centrer; 
+			li { list-style: none; .inline; width:310px; height:390px; padding:10px 0 20px; margin:0 10px 30px; .centrer; .ombrelegere; background:url('../img/plus.png') no-repeat top right white; .zoomhover; 
+				h2 { .gras; color:@bleu; .moyen; .majuscules; 
+					&:before { content:''; .block; width:2px; height:20px; margin:auto auto 10px; background-color:@bleu; }
+				}
+			}
+			@media screen and (max-width: @tablette) and (min-width: @tablettePortrait) { margin-top:0; 
+				li { width:30%; }
+			}
+		}
+		
+		/* Intro */
+		#accueil { background-color:@bleuclair; .normal; margin-bottom:100px; padding-top:0; 
+			.wrapper { background:url('../svg/guillemets.svg') no-repeat top left; background-size:200px; padding:80px 0 15px 160px;
+				img { float:right; .ombrelegere; margin:-40px 0 -40px 50px; max-width:40%; }
+				.texte { max-width:800px; overflow:auto; 
+					p { 
+						strong { .block; .moyen; margin-bottom:20px; }
+					}
+				}
+			}
+			@media screen and (max-width: @smartphone) {
+				.wrapper { padding-left:50px; }
+			}
+		}
+		
+		/* Le cabinet */
+		#cabinet { margin-bottom:50px; 
+			.wrapper {
+				.content, .spip_logo { .inline; }
+				.content { max-width:45%; }
+				.spip_logo { max-width:52%; margin-right:2%; }
+				h2 { margin-left:-50px; 
+					&:after { content:''; display:block; width:25px; height:3px; background-color:@bleu; margin:10px 0 20px 50px; }
+				}
+				strong { .block; margin:20px 0; }
+				.liens { 
+					a { .bouton; background-color:@bleu; color:white; .gras; .inline; vertical-align: middle; margin:0 20px 20px 0; .majuscules; 
+						&+a { background:url('../svg/calendrier.svg') 15px 8px no-repeat @bleu; background-size:35px;.bouton; vertical-align:middle; text-align:left; padding:5px 20px 5px 60px; margin-right:0; line-height:19px; }
+					}
+				}
+				@media screen and (max-width: @tablettePortrait) {
+					.spip_logo { max-width:100%; margin:0; }
+					.content { max-width:100%; 
+						h2 { margin-left:0; } 
+					}
+				}
+			}
+		}
+		
+		/* Les actualités */
+		#actualites { margin-bottom:100px; 
+			.wrapper {
+				h2 {margin-bottom:40px; 
+					&:before { content:''; display:inline-block; width:25px; height:3px; background-color:@bleu; margin-right:10px; }
+				}
+				article { background:url('../img/plus_bas.png') no-repeat bottom right white; padding-bottom:40px; min-height: 415px; 
+					.info-publi { .absolute; top:15px; right:15px; left:auto; background-color:white; color:@bleu; border-radius:15px; .petit; .gras; padding:5px; }
+					h3 {
+						&:after { content:''; display:block; width:25px; height:3px; background-color:@bleu; margin:10px 0; }
+					}
+				}
+				&>a { max-width:300px; .majuscules; }
+				
+				@media screen and (max-width: @smartphone) {
+					h2 { text-align: left; 
+						&:before { display:none; }
+						&:after { content:''; display:block; width:25px; height:3px; background-color:@bleu; margin:10px 0 10px 3px; }
+					}	
+				}
+				
+				@media screen and (max-width: @tablette) {
+					article { min-height: 440px; }
+				}
+			}
+		}
+	}
+	
