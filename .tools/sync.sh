@@ -96,14 +96,14 @@ if [ "$SITE_TYPE" = "SPIP" ]; then
   LOCAL_IMG_PATH="$(cd "$(dirname "$0")/../../.." && pwd)/IMG"
 
   echo "== Sync du dossier IMG =="
-  rsync -avz -e "ssh -p $REMOTE_SSH_PORT" \
+  rsync -avz --no-perms --no-owner --no-group --omit-dir-times -e "ssh -p $REMOTE_SSH_PORT" \
   $REMOTE_SSH_USER@$REMOTE_SSH_HOST:$REMOTE_PATH/IMG/ "$LOCAL_IMG_PATH/"
 else
   # Dossier uploads local = 3 niveaux au-dessus du script
   LOCAL_UPLOADS_PATH="$(cd "$(dirname "$0")/../../.." && pwd)/uploads"
 
   echo "== Sync du dossier uploads =="
-  rsync -avz -e "ssh -p $REMOTE_SSH_PORT" \
+  rsync -avz --no-perms --no-owner --no-group --omit-dir-times -e "ssh -p $REMOTE_SSH_PORT" \
   $REMOTE_SSH_USER@$REMOTE_SSH_HOST:$REMOTE_PATH/wp-content/uploads/ "$LOCAL_UPLOADS_PATH/"
 fi
 
