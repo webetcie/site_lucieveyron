@@ -1,0 +1,11 @@
+.ok
+plugin_xml_cache.gz
+/phpcs.xml
+/.nova
+**/.DS_Store
+**/.htaccess
+/.buildpath
+/.project
+/.settings
+/.idea/
+/.vscode/*
